@@ -107,9 +107,15 @@ fun sumOfDigits(number: Int): Int {
 }
 
 fun fibonacci(n: Int): Int {
-    if (n == 0) return 0
-    if (n == 1) return 1
-    return fibonacci(n - 1) + fibonacci(n - 2)
+    if (n <= 1) return n
+    var a = 0
+    var b = 1
+    for (i in 2..n) {
+        val sum = a + b
+        a = b
+        b = sum
+    }
+    return b
 }
 
 fun findDuplicates(numbers: List<Int>): List<Int> {
@@ -190,7 +196,7 @@ fun main() {
     )
     println("Две строки анаграммы: " + areAnagrams("Рано", "Нора"))
     println("Сумма цифр заданного числа: " + sumOfDigits(213))
-    println("Числа Фибоначчи до 100" + fibonacci(5))
+    println("Числа Фибоначчи до 30 " + fibonacci(30))
     println("Дублирующиеся элементы в списке" + findDuplicates(listOf(11, 11, 1, 1, 3213, 341, 4454, 123132, 6765)))
     println("Конвертируй секунды в формат \"ЧЧ:ММ:СС\"" + formatTime(11111))
     println("Является ли число совершенным: " + isPerfectNumber(26))
